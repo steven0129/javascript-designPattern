@@ -1,4 +1,4 @@
-# 物件導向的的javascript
+# 打開設計模式的大門：物件導向javascript
 
 ## 鴨子的範例(來源：書本P.4)
 
@@ -74,6 +74,9 @@
 以上程式碼體現程式的多態性，但只要輸入參數有不同種就必須更動makeSound函式。
 因此正確的作法應是"不動的部分固定，變動的訊息切開"，以program3.js為例
 
+ps. new關鍵字定義:The new operator creates an instance of a user-defined object type or of one of the built-in object types that has a constructor function.
+(來源：https://goo.gl/UL5eoJ)
+
     var makeSound = (animal) => {
         animal.sound()
     }
@@ -90,3 +93,70 @@
     makeSound(new Duck())
     makeSound(new Chicken())
     // makeSound(new Dog())
+
+## javascript的原型模式
+
+原型模式：不關心物件的具體類型，而是找到一物件，通過複製來建立一個一模一樣的物件。程式碼program4.js：
+
+    var Plane = function () {
+        this.blood = 100
+        this.attackLevel = 1
+        this.defenseLevel = 1
+    }
+
+    var plane = new Plane()
+    this.blood = 500
+    this.attackLevel = 10
+    this.defenseLevel = 7
+
+    var clonePlane = Object.create(plane)
+    console.log('blood: ' + clonePlane.blood)
+    console.log('attackLevel: ' + clonePlane.attackLevel)
+    console.log('defenseLevel: ' + clonePlane.defenseLevel)
+
+原型模式的關鍵在於本身是否提供clone方法，ES5提供Object.create來複製物件
+
+ps. Object.create定義：以指定的原型物件以及屬性來建立新的物件(來源：https://goo.gl/DrxIJD)
+
+## javascript的原型繼承
+
+javascript的四大運作法則
+
+1. 萬物皆物件
+2. 找到一個物件作為原型(prototype)複製它即能得出物件
+3. 物件會記住它的原型
+4. 如果物件無法回應某個請求，它會把該請求委託給它的原型
+
+原型繼承範例(program5.js)：
+
+    var obj = { name: 'sven' }
+    var A = function () { }
+    A.prototype = obj
+
+    var a = new A()
+    console.log(a.name)
+
+ES6實現繼承(program6.js)：
+
+    class Animal {
+        constructor(name) {
+            this.name = name
+        }
+
+        getName() {
+            return this.name
+        }
+    }
+
+    class Dog extends Animal {
+        constructor(name) {
+            super(name)
+        }
+
+        speak() {
+            return 'woof'
+        }
+    }
+
+    var dog = new Dog('Scamp')
+    console.log(dog.getName()+' says '+dog.speak())
