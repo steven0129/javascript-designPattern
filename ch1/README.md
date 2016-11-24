@@ -112,9 +112,9 @@ var Plane = function () {
 }
 
 var plane = new Plane()
-this.blood = 500
-this.attackLevel = 10
-this.defenseLevel = 7
+plane.blood = 500
+plane.attackLevel = 10
+plane.defenseLevel = 7
 
 var clonePlane = Object.create(plane)
 console.log('blood: ' + clonePlane.blood)
