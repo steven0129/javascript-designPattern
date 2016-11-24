@@ -9,7 +9,7 @@ plane.blood = 500
 plane.attackLevel = 10
 plane.defenseLevel = 7
 
-var clonePlane = Object.create(plane)
-console.log('blood: ' + clonePlane.blood)
-console.log('attackLevel: ' + clonePlane.attackLevel)
-console.log('defenseLevel: ' + clonePlane.defenseLevel)
+var planeInstance = Object.create(plane)
+console.log('blood: ' + planeInstance.blood)
+console.log('attackLevel: ' + planeInstance.attackLevel)
+console.log('defenseLevel: ' + planeInstance.defenseLevel)
