@@ -6,26 +6,28 @@
 
 將以上例子以程式碼來呈現
 
-    var duck= {
-        duckSinging: () => console.log('嘎嘎嘎')
+```javascript
+var duck = {
+    duckSinging: () => console.log('嘎嘎嘎')
+}
+
+var chicken = {
+    dickSinging: () => console.log('嘎嘎嘎')
+}
+
+var choir = [];
+
+var joinChoir = (animal) => {
+    if (animal && typeof (animal.duckSinging === 'function')) {
+        choir.push(animal)
+        console.log('恭喜加入合唱團')
+        console.log('合唱團已有成員數量: ' + choir.length)
     }
+}
 
-    var chicken= {
-        dickSinging: () => console.log('嘎嘎嘎')
-    }
-
-    var choir=[]; //合唱團
-
-    var joinChoir=(animal) =>{
-        if(animal && typeof(animal.duckSinging==='function')) {
-            choir.push(animal)
-            console.log('恭喜加入合唱團')
-            console.log('合唱團已有成員數量: '+choir.length)
-        }
-    }
-
-    joinChoir(duck)
-    joinChoir(chicken)
+joinChoir(duck)
+joinChoir(chicken)
+```
 
 以node執行
 
@@ -47,20 +49,22 @@
 
 將以上例子以程式碼呈現
 
-    var makeSound = (animal) => {
-        if (animal instanceof Duck) console.log('嘎嘎嘎')
-        else if (animal instanceof Chicken) console.log('顆顆顆')
-    }
+```javascript
+var makeSound = (animal) => {
+    if (animal instanceof Duck) console.log('嘎嘎嘎')
+    else if (animal instanceof Chicken) console.log('顆顆顆')
+}
 
-    var Duck = function() { }
-    var Chicken = function() { }
+var Duck = function() { }
+var Chicken = function() { }
 
-    // 如果改成以下程式似乎不能執行.....
-    // var Duck=()=>{}
-    // var Chicken=()=>{}
+// 如果改成以下程式似乎不能執行.....
+// var Duck=()=>{}
+// var Chicken=()=>{}
 
-    makeSound(new Duck())
-    makeSound(new Chicken())
+makeSound(new Duck())
+makeSound(new Chicken())
+```
 
 以node執行
 
@@ -77,42 +81,46 @@
 ps. new關鍵字定義:The new operator creates an instance of a user-defined object type or of one of the built-in object types that has a constructor function.
 (來源：https://goo.gl/UL5eoJ)
 
-    var makeSound = (animal) => {
-        animal.sound()
-    }
+```javascript
+var makeSound = (animal) => {
+    animal.sound()
+}
 
-    var Duck = function() { }
-    Duck.prototype.sound=() => console.log('嘎嘎嘎')
+var Duck = function () { }
+Duck.prototype.sound = () => console.log('嘎嘎嘎')
 
-    var Chicken = function() { }
-    Chicken.prototype.sound=() => console.log('顆顆顆')
+var Chicken = function () { }
+Chicken.prototype.sound = () => console.log('顆顆顆')
 
-    var Dog = function() { }
-    Dog.prototype.sound=() => console.log('旺旺旺')
+var Dog = function () { }
+Dog.prototype.sound = () => console.log('旺旺旺')
 
-    makeSound(new Duck())
-    makeSound(new Chicken())
-    // makeSound(new Dog())
+makeSound(new Duck())
+makeSound(new Chicken())
+// makeSound(new Dog())
+```
 
 ## javascript的原型模式
 
 原型模式：不關心物件的具體類型，而是找到一物件，通過複製來建立一個一模一樣的物件。程式碼program4.js：
 
-    var Plane = function () {
-        this.blood = 100
-        this.attackLevel = 1
-        this.defenseLevel = 1
-    }
+```javascript
+var Plane = function () {
+    this.blood = 100
+    this.attackLevel = 1
+    this.defenseLevel = 1
+}
 
-    var plane = new Plane()
-    this.blood = 500
-    this.attackLevel = 10
-    this.defenseLevel = 7
+var plane = new Plane()
+this.blood = 500
+this.attackLevel = 10
+this.defenseLevel = 7
 
-    var clonePlane = Object.create(plane)
-    console.log('blood: ' + clonePlane.blood)
-    console.log('attackLevel: ' + clonePlane.attackLevel)
-    console.log('defenseLevel: ' + clonePlane.defenseLevel)
+var clonePlane = Object.create(plane)
+console.log('blood: ' + clonePlane.blood)
+console.log('attackLevel: ' + clonePlane.attackLevel)
+console.log('defenseLevel: ' + clonePlane.defenseLevel)
+```
 
 原型模式的關鍵在於本身是否提供clone方法，ES5提供Object.create來複製物件
 
@@ -129,34 +137,38 @@ javascript的四大運作法則
 
 原型繼承範例(program5.js)：
 
-    var obj = { name: 'sven' }
-    var A = function () { }
-    A.prototype = obj
+```javascript
+var obj = { name: 'sven' }
+var A = function () { }
+A.prototype = obj
 
-    var a = new A()
-    console.log(a.name)
+var a = new A()
+console.log(a.name)
+```
 
 ES6實現繼承(program6.js)：
 
-    class Animal {
-        constructor(name) {
-            this.name = name
-        }
-
-        getName() {
-            return this.name
-        }
+```javascript
+class Animal {
+    constructor(name) {
+        this.name = name
     }
 
-    class Dog extends Animal {
-        constructor(name) {
-            super(name)
-        }
+    getName() {
+        return this.name
+    }
+}
 
-        speak() {
-            return 'woof'
-        }
+class Dog extends Animal {
+    constructor(name) {
+        super(name)
     }
 
-    var dog = new Dog('Scamp')
-    console.log(dog.getName()+' says '+dog.speak())
+    speak() {
+        return 'woof'
+    }
+}
+
+var dog = new Dog('Scamp')
+console.log(dog.getName()+' says '+dog.speak())
+```
