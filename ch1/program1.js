@@ -1,20 +1,29 @@
+function yell() {
+    console.log(this.sound);
+}
+
 var duck = {
-    duckSinging: () => console.log('嘎嘎嘎')
+    duckSinging: yell,
+    sound: '嘎嘎嘎'
 }
 
 var chicken = {
-    dickSinging: () => console.log('嘎嘎嘎')
+    duckSinging: yell,
+    sound: '嘎嘎嘎'
 }
 
 var choir = [];
 
 var joinChoir = (animal) => {
-    if (animal && typeof (animal.duckSinging === 'function')) {
-        choir.push(animal)
-        console.log('恭喜加入合唱團')
-        console.log('合唱團已有成員數量: ' + choir.length)
+    if (animal && (animal.duckSinging === yell)) {
+        choir.push(animal);
+        console.log('恭喜加入合唱團');
+        console.log('合唱團已有成員數量: ' + choir.length);
     }
 }
 
-joinChoir(duck)
-joinChoir(chicken)
+joinChoir(duck);
+joinChoir(chicken);
+
+duck.duckSinging();
+chicken.duckSinging();
