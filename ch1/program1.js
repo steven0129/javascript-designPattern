@@ -3,13 +3,13 @@ var duck = {
 }
 
 var chicken = {
-    dickSinging: () => console.log('嘎嘎嘎')
+    duckSinging: () => console.log('嘎嘎嘎')
 }
 
 var choir = [];
 
 var joinChoir = (animal) => {
-    if (animal && typeof (animal.duckSinging === 'function')) {
+    if (animal && (typeof animal.duckSinging) === 'function') {
         choir.push(animal)
         console.log('恭喜加入合唱團')
         console.log('合唱團已有成員數量: ' + choir.length)
@@ -18,3 +18,4 @@ var joinChoir = (animal) => {
 
 joinChoir(duck)
 joinChoir(chicken)
+
