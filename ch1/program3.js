@@ -1,5 +1,9 @@
 var makeSound = (animal) => {
-    animal.sound()
+    if (animal.sound !== undefined) {
+        animal.sound();
+        return ;
+    }
+    throw new TypeError();
 }
 
 var Duck = function () { }
@@ -9,7 +13,7 @@ var Chicken = function () { }
 Chicken.prototype.sound = () => console.log('顆顆顆')
 
 var Dog = function () { }
-Dog.prototype.sound = () => console.log('旺旺旺')
+//Dog.prototype.sound = () => console.log('旺旺旺')
 
 makeSound(new Duck())
 makeSound(new Chicken())
