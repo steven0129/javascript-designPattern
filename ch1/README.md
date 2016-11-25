@@ -116,10 +116,10 @@ plane.blood = 500
 plane.attackLevel = 10
 plane.defenseLevel = 7
 
-var clonePlane = Object.create(plane)
-console.log('blood: ' + clonePlane.blood)
-console.log('attackLevel: ' + clonePlane.attackLevel)
-console.log('defenseLevel: ' + clonePlane.defenseLevel)
+var planeInstance = Object.create(plane)
+console.log('blood: ' + planeInstance.blood)
+console.log('attackLevel: ' + planeInstance.attackLevel)
+console.log('defenseLevel: ' + planeInstance.defenseLevel)
 ```
 
 原型模式的關鍵在於本身是否提供clone方法，ES5提供Object.create來複製物件
