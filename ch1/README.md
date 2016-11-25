@@ -126,7 +126,7 @@ console.log('defenseLevel: ' + planeInstance.defenseLevel)
 
 ps. Object.create定義：以指定的原型物件以及屬性來建立新的物件(來源：https://goo.gl/DrxIJD)
 
-ps. (感謝@C-ZW大大補充) Object.assign定義：used to copy the values of all enumerable own properties from one or more source objects to a target object. It will return the target object.(來源：https://goo.gl/XEhBXp)
+ps. (感謝[C-ZW](https://github.com/C-ZW)大大補充) Object.assign定義：used to copy the values of all enumerable own properties from one or more source objects to a target object. It will return the target object.(來源：https://goo.gl/XEhBXp)
 
 ## javascript的原型繼承
 
