@@ -13,3 +13,11 @@
 5. 實例應該能在不修改的情況下具有可延伸性
 6. 一個類別希望它的子類別實作它所建立的物件
 7. 類別的實例化在執行時才指定
+
+在Design Patterns: Elements of Reusable Object-Oriented Software一書中將創建者模式分為五種：
+
+1. 抽象工廠模式(Abstract factory pattern)
+2. 創建者模式(Builder pattern)
+3. 工廠方法模式(Factory method pattern)
+4. 原型模式(Prototyoe pattern)
+5. 單例模式(Singleton pattern)
