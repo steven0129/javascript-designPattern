@@ -27,7 +27,9 @@
 ### 一個基本的單例模式
 
 ```javascript
-var Singleton = (name) => {
+// program1.js
+
+var Singleton = function(name) {
     this.name = name
     this.instance = null
 }
@@ -50,6 +52,8 @@ alert(a === b) // true
 或者我們使用ES6
 
 ```javascript
+// program2.js
+
 class Singleton {
     constructor(name) {
         this.name = name
