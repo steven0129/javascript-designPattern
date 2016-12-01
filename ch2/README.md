@@ -21,3 +21,54 @@
 3. 工廠方法模式(Factory method pattern)
 4. 原型模式(Prototyoe pattern)
 5. 單例模式(Singleton pattern)
+
+## 單例模式(Singleton pattern)
+
+### 一個基本的單例模式
+
+```javascript
+var Singleton = (name) => {
+    this.name = name
+    this.instance = null
+}
+
+Singleton.prototype.getName = () => {
+    alert(this.name)
+}
+
+Singleton.getInstance = (name) => {
+    if (!this.instance) this.instance = new Singleton(name)
+    return this.instance
+}
+
+var a = Singleton.getInstance('sven1')
+var b = Singleton.getInstance('sven2')
+
+alert(a === b) // true
+```
+
+或者我們使用ES6
+
+```javascript
+class Singleton {
+    constructor(name) {
+        this.name = name
+        this.instance = null
+    }
+
+    getName() {
+        console.log(this.name)
+    }
+
+    getInstance(name) {
+        if (!this.instance) this.instance = new Singleton(name)
+        return this.instance
+    }
+}
+
+var object=new Singleton
+var a = object.getInstance('sven1')
+var b = object.getInstance('sven2')
+
+console.log(a === b) // true
+```
