@@ -1,6 +1,6 @@
 # 魔鬼藏在細節中：創建者模式
 
-## 創建者模式(Creational pattern)
+## 創建型模式(Creational pattern)
 
 定義：將系統與它的物件建立、結合、表示的方式分離。這些設計模式在物件建立的類型、主體、方式、時間等方面提高了系統的靈活性。(來源：https://zh.wikipedia.org/wiki/創建型模式)
 
