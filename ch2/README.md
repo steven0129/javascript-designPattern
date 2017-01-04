@@ -76,3 +76,9 @@ var b = object.getInstance('sven2')
 
 console.log(a === b) // true
 ```
+
+單例模式的核心在於確保類別中只能有一個實例(instance)跟一個全域存取點(access of point)
+
+過去我們在處理javascirpt僅能宣告全域變數的性質時常需要耗費許多腦力在此模式身上，
+但是現在我們有了強大的ES6當作武器(而且未來可能完全進化成ES7)，
+就不需要浪費時間在一些閉包(closure)以及一些命名空間(namespace)身上
