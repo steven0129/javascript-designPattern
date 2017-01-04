@@ -82,3 +82,56 @@ console.log(a === b) // true
 過去我們在處理javascirpt僅能宣告全域變數的性質時常需要耗費許多腦力在此模式身上，
 但是現在我們有了強大的ES6當作武器(而且未來可能完全進化成ES7)，
 就不需要浪費時間在一些閉包(closure)以及一些命名空間(namespace)身上
+
+### 惰性單例(懶漢模式)
+
+單例模式後來出現了許多變形，在此僅介紹最常用的懶漢模式，
+其他則留待各位大大補充
+
+懶漢模式的精神在於實例留到第一次被使用時才建構，就像下面這個程式碼
+
+```javascript
+// program3.js
+
+const _name = Symbol('name')
+class Singleton {
+    constructor() {
+        this[_name] = null
+    }
+
+    setName(name) {
+        this[_name] = name
+    }
+
+    getName() {
+        return this[_name]
+    }
+}
+
+var instance1 = new Singleton()
+instance1.setName('steven1')
+
+var instance2 = new Singleton()
+instance2.setName('steven2')
+
+console.log(instance1.getName()) // steven1
+console.log(instance2.getName()) // steven2
+
+console.log(instance1._name) // undefined
+console.log(instance2._name) // undefined
+```
+
+在Singleton類別裡一開始並沒有賦予_name這個private的變數任何值，
+直到第一次使用setName時才賦值給_name
+
+另外值得注意的是這裡利用Symbol的唯一性來達到私有變數(private variable)的效果，
+不同於以往利用閉包(closure)的方式，
+ps. Symbol的定義：A symbol is a unique and immutable data type. 
+It may be used as an identifier for object properties. 
+The Symbol object is an implicit object wrapper for the symbol primitive data type
+(來源：https://goo.gl/9Vkn0I)
+
+再來眼尖的各位一定發現了，
+我的類別裡竟然沒有出現getInstance方法，
+這是因為new關鍵字本身就會幫你產生實例，
+不需要再自己寫了
