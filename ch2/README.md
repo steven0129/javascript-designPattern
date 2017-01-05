@@ -85,7 +85,7 @@ class Singleton {
     }
 
     getName() {
-        console.log(this.name)
+        return this[_name]
     }
 
     getInstance() {
