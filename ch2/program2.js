@@ -8,18 +8,25 @@ class Singleton {
         this[_instance] = null
     }
 
+    setName(name) {
+        this[_name] = name
+    }
+
     getName() {
         console.log(this.name)
     }
 
-    getInstance(name) {
-        if (!this[_instance]) this[_instance] = new Singleton(name)
+    getInstance() {
+        if (!this[_instance]) this[_instance] = new Singleton()
         return this[_instance]
     }
 }
 
-var object=new Singleton
-var instance1 = object.getInstance('steven1')
-var instance2 = object.getInstance('steven2')
+var object = new Singleton
+var instance1 = object.getInstance()
+instance1.setName('steven1')
+
+var instance2 = object.getInstance()
+instance2.setName('steven2')
 
 console.log(instance1 === instance2) // true

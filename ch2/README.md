@@ -40,22 +40,29 @@
 ```javascript
 // program1.js
 
-var Singleton = function(name) {
-    this.name = name
+var Singleton = function() {
+    this.name = null
     this.instance = null
+}
+
+Singleton.prototype.setName = (name) => {
+    this.name = name
 }
 
 Singleton.prototype.getName = () => {
     alert(this.name)
 }
 
-Singleton.getInstance = (name) => {
-    if (!this.instance) this.instance = new Singleton(name)
+Singleton.getInstance = () => {
+    if (!this.instance) this.instance = new Singleton()
     return this.instance
 }
 
-var a = Singleton.getInstance('sven1')
-var b = Singleton.getInstance('sven2')
+var a = Singleton.getInstance()
+a.setName('steven1')
+
+var b = Singleton.getInstance()
+b.setName('steven2')
 
 console.log(a === b) // true
 ```
@@ -73,19 +80,26 @@ class Singleton {
         this[_instance] = null
     }
 
+    setName(name) {
+        this[_name] = name
+    }
+
     getName() {
         console.log(this.name)
     }
 
-    getInstance(name) {
-        if (!this[_instance]) this[_instance] = new Singleton(name)
+    getInstance() {
+        if (!this[_instance]) this[_instance] = new Singleton()
         return this[_instance]
     }
 }
 
-var object=new Singleton
-var instance1 = object.getInstance('steven1')
-var instance2 = object.getInstance('steven2')
+var object = new Singleton
+var instance1 = object.getInstance()
+instance1.setName('steven1')
+
+var instance2 = object.getInstance()
+instance2.setName('steven2')
 
 console.log(instance1 === instance2) // true
 ```

@@ -1,18 +1,27 @@
-var Singleton = function(name) {
-    this.name = name
+// program1.js
+
+var Singleton = function() {
+    this.name = null
     this.instance = null
 }
 
-Singleton.prototype.getName = () => {
-    console.log(this.name)
+Singleton.prototype.setName = (name) => {
+    this.name = name
 }
 
-Singleton.getInstance = (name) => {
-    if (!this.instance) this.instance = new Singleton(name)
+Singleton.prototype.getName = () => {
+    alert(this.name)
+}
+
+Singleton.getInstance = () => {
+    if (!this.instance) this.instance = new Singleton()
     return this.instance
 }
 
-var a = Singleton.getInstance('sven1')
-var b = Singleton.getInstance('sven2')
+var a = Singleton.getInstance()
+a.setName('steven1')
+
+var b = Singleton.getInstance()
+b.setName('steven2')
 
 console.log(a === b) // true
