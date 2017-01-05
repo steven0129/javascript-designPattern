@@ -57,18 +57,20 @@ Singleton.getInstance = (name) => {
 var a = Singleton.getInstance('sven1')
 var b = Singleton.getInstance('sven2')
 
-alert(a === b) // true
+console.log(a === b) // true
 ```
 
 或者我們使用ES6
 
 ```javascript
 // program2.js
+
 const _name = Symbol('name')
+const _instance = Symbol('instance')
 class Singleton {
-    constructor(name) {
-        this[_name] = name
-        this.instance = null
+    constructor() {
+        this[_name] = null
+        this[_instance] = null
     }
 
     getName() {
@@ -76,8 +78,8 @@ class Singleton {
     }
 
     getInstance(name) {
-        if (!this.instance) this.instance = new Singleton(name)
-        return this.instance
+        if (!this[_instance]) this[_instance] = new Singleton(name)
+        return this[_instance]
     }
 }
 
@@ -85,7 +87,7 @@ var object=new Singleton
 var instance1 = object.getInstance('steven1')
 var instance2 = object.getInstance('steven2')
 
-console.log(a === b) // true
+console.log(instance1 === instance2) // true
 ```
 在Singleton類別裡一開始並沒有賦予_name這個private的變數任何值，
 直到第一次使用setName時才賦值給_name
@@ -125,4 +127,3 @@ instance2.setName('steven2')
 
 console.log(instance1 === instance2) // false
 ```
-
