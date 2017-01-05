@@ -1,7 +1,11 @@
+// program2.js
+
+const _name = Symbol('name')
+const _instance = Symbol('instance')
 class Singleton {
-    constructor(name) {
-        this.name = name
-        this.instance = null
+    constructor() {
+        this[_name] = null
+        this[_instance] = null
     }
 
     getName() {
@@ -9,13 +13,13 @@ class Singleton {
     }
 
     getInstance(name) {
-        if (!this.instance) this.instance = new Singleton(name)
-        return this.instance
+        if (!this[_instance]) this[_instance] = new Singleton(name)
+        return this[_instance]
     }
 }
 
 var object=new Singleton
-var a = object.getInstance('sven1')
-var b = object.getInstance('sven2')
+var instance1 = object.getInstance('steven1')
+var instance2 = object.getInstance('steven2')
 
-console.log(a === b) // true
+console.log(instance1 === instance2) // true
